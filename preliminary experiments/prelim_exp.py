@@ -65,7 +65,7 @@ def run_prelim_exp(exp_name, dummy_run=False):
 
             if count == 100 and dummy_run == True:
                 break
-            if count % 100 == 0:
+            if count % 500 == 0:
                 print("Created %s images." % count)
 
             caption = wrd.upper()
