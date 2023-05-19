@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 from torchvision.utils import make_grid
 import wandb
 
-from sampler import Euler_Maruyama_sampler
-from unet_setup import marginal_prob_std_fn, loss_fn_cond, diffusion_coeff_fn
+from main_experiments.sampler import Euler_Maruyama_sampler
+from main_experiments.unet_setup import marginal_prob_std_fn, loss_fn_cond, diffusion_coeff_fn
 
 
 def sample_text_caption(text_prompt, tokenizer, text_encoder):
