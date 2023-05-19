@@ -8,14 +8,14 @@ def create_imgs(config):
 
     resolution = config["img_size"]
     background_colour = 'black'
-    font_ttf = 'master_thesis/FontsFree-Net-arial-bold.ttf'
+    font_ttf = 'FontsFree-Net-arial-bold.ttf'
     font_colour = 'white'
     font_size = 10
     DIR_PREP = 'word_imgs'
 
     # mc4 words
     wiki_wrds = []
-    with open('master_thesis/data/datasets/mc4_data.txt') as wrd_list:
+    with open('data/datasets/mc4_data.txt') as wrd_list:
         for wrd in wrd_list:
             wiki_wrds.append(wrd.replace('\n', '').lower())
 
