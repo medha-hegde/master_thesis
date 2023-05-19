@@ -1,7 +1,6 @@
 # Text Model Set up
-def load_text_model(config):
+def load_text_model(pretrained_model_name_or_path):
 
-    pretrained_model_name_or_path = config["pretrained_model_name_or_path"]
     print("Loading Model %s" % pretrained_model_name_or_path)
 
     if 'clip' in pretrained_model_name_or_path:

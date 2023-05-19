@@ -400,3 +400,13 @@ def loss_fn_cond(model, x, y, marginal_prob_std, eps=1e-5):
   score = model(perturbed_x, random_t, encoder_hidden_states=y,output_dict=False)
   loss = torch.mean(torch.sum((score * std[:, None, None, None] + z)**2, dim=(1,2,3)))
   return loss
+
+
+def get_n_params(model):
+    pp=0
+    for p in list(model.parameters()):
+        nn=1
+        for s in list(p.size()):
+            nn = nn*s
+        pp += nn
+    return pp

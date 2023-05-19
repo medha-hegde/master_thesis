@@ -3,6 +3,8 @@ kaleido==0.2.1
 sentence-transformers==2.2.1
 transformers==4.29.2
 datasets==2.12.0
-einops
-sentencepiece
-wandb
+einops==0.6.1
+sentencepiece==0.1.99
+wandb==0.15.3
+datasets==2.12.0
+torch==2.0.1+cu118
