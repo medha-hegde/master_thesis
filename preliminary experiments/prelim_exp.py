@@ -10,8 +10,7 @@ import pandas as pd
 import operator
 from sklearn.metrics.pairwise import cosine_similarity
 
-wiki_wrds = prelim_helpers.load_wiki(os.path.normpath(os.getcwd() + os.sep + os.pardir) +
-                                     +"/data/datasets/wiktionary_wrds.txt")
+wiki_wrds = prelim_helpers.load_wiki(os.path.normpath(os.getcwd() + os.sep + os.pardir) + "/wiktionary_wrds.txt")
 
 
 def run_prelim_exp(exp_name, dummy_run=False):
