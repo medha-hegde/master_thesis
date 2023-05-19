@@ -14,9 +14,8 @@ from main_experiments.sampler import Euler_Maruyama_sampler
 from main_experiments.unet_setup import marginal_prob_std_fn, loss_fn_cond, diffusion_coeff_fn
 
 
-def sample_text_caption(text_prompt, tokenizer, text_encoder):
+def sample_text_caption(text_prompt, tokenizer, text_encoder ,textmodel_maxtokens):
     sample_text = text_prompt + " \"%s\"" % ("HELLO")
-    textmodel_maxtokens = list(text_encoder.named_parameters())[0][1].shape[1]
     sample_text_y = [str(sample_text)]
     sample_inputs = tokenizer(sample_text_y, max_length=textmodel_maxtokens, padding="max_length",
                               truncation=True, return_tensors="pt")
@@ -35,6 +34,7 @@ def train_diffusion_model(dataloader,
                           device,
                           sample_text_prompt,
                           sample_batch_size,
+                          textmodel_maxtokens,
                           n_epochs=100,
                           lr=10e-4,
                           model_name="transformer",
@@ -60,7 +60,7 @@ def train_diffusion_model(dataloader,
         print("loading scheduler..")
 
     tqdm_epoch = trange(n_epochs)
-    sample_encoder_hidden_states = sample_text_caption(sample_text_prompt, tokenizer, text_encoder)
+    sample_encoder_hidden_states = sample_text_caption(sample_text_prompt, tokenizer, text_encoder,textmodel_maxtokens)
 
     for epoch in tqdm_epoch:
         avg_loss = 0.
