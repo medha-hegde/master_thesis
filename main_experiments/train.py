@@ -38,8 +38,7 @@ def train_diffusion_model(config,
                           model_name="transformer",
                           model_save_path=None,
                           checkpoint=None,
-                          dummy_run=False,
-                          combined_embedding=False
+                          dummy_run=False
                           ):
 
     device = config["device"]
@@ -62,10 +61,10 @@ def train_diffusion_model(config,
 
     tqdm_epoch = trange(n_epochs)
 
-    sample_encoder_hidden_states = sample_text_caption(config["sample_text_prompt"], tokenizer, text_encoder,
+    sample_encoder_hidden_states = sample_text_caption(config["text_prompt"], tokenizer, text_encoder,
                                                        config["textmodel_maxtokens"])
-    if combined_embedding is not None:
-        sample_encoder_hidden_states_2 = sample_text_caption(config["sample_text_prompt"], tokenizer_2, text_encoder_2,
+    if config['pretrained_model_name_or_path_2'] != "None":
+        sample_encoder_hidden_states_2 = sample_text_caption(config["text_prompt"], tokenizer_2, text_encoder_2,
                                                            config["textmodel_maxtokens"])
         sample_encoder_hidden_states = torch.cat((sample_encoder_hidden_states, sample_encoder_hidden_states_2),
                                                         dim=2)
@@ -83,7 +82,7 @@ def train_diffusion_model(config,
 
             encoder_hidden_states = text_encoder(batch["input_ids"].cuda())[0]
             encoder_hidden_states = encoder_hidden_states.cpu()
-            if combined_embedding is not None:
+            if config['pretrained_model_name_or_path_2'] != "None":
                 encoder_hidden_states_2 = text_encoder_2(batch["input_ids_2"].cuda())[0]
                 encoder_hidden_states_2 = encoder_hidden_states_2.cpu()
                 encoder_hidden_states = torch.cat((encoder_hidden_states, encoder_hidden_states_2), dim=2)
