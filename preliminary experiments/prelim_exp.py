@@ -10,12 +10,12 @@ import pandas as pd
 import operator
 from sklearn.metrics.pairwise import cosine_similarity
 
-wiki_wrds = prelim_helpers.load_wiki(os.path.normpath(os.getcwd() + os.sep + os.pardir) + "/wiktionary_wrds.txt")
+wiki_wrds = prelim_helpers.load_wiki(os.path.normpath(os.getcwd() + os.sep + os.pardir)
+                                     + "/data/datasets/wiktionary_wrds.txt")
 
 
 def run_prelim_exp(exp_name, dummy_run=False):
-
-    valid_exp_names = {"experiment 1", "experiment 2","experiment 3", "experiment 4"}
+    valid_exp_names = {"experiment 1", "experiment 2", "experiment 3", "experiment 4"}
     if exp_name not in valid_exp_names:
         raise ValueError("Preliminary Experiment Name must be one of %r." % valid_exp_names)
 
@@ -131,8 +131,8 @@ def run_prelim_exp(exp_name, dummy_run=False):
 
     # Calculate Avg Scores
     if exp_name == "experiment 4":
-        y_err_list=[]
-        sim_scores_list=[]
+        y_err_list = []
+        sim_scores_list = []
         for model_name in ["clip-ViT-B-32", 'google/byt5-small', 'google/byt5-large']:
             cos_sim = np.load("%s_%s_similarity_scores.npy" % (model_name.split("/")[-1], exp_name))
             plot_data = prelim_helpers.calc_avg_sims(exp_name, cos_sim, no_of_imgs_per_word)
