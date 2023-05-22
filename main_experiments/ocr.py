@@ -234,7 +234,7 @@ def ocr_plot(ocr_plot_configs):
     for i_m, mod in enumerate(final_scores_dict.keys()):
         fig.add_trace(go.Bar(
             name= model_names[i_m],
-            x=["0", "1", "2", "3", "4"], y=mean_stddev_dict[mod]['mean'],
+            x=["Top 1%","1-10%","10-20%","20-30%","Bottom 50%"], y=mean_stddev_dict[mod]['mean'],
             error_y=dict(type='data', array=mean_stddev_dict[mod]['std dev']),
             error_y_thickness=1,
             marker_color=encoder_colours[i_m]
