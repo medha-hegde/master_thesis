@@ -1,6 +1,5 @@
-# Preliminary Experiments for Master Thesis "Improving Text Rendering in Image Generation"
-## June 2023, KU Leuven 
-## Medha Hegde (r0872802)
+## Preliminary Experiments for Master Thesis "Improving Text Rendering in Image Generation"
+
 
 This repository contains all the base code required to run the Preliminary Experiments.
 The Preliminary Experiments are designed to investigate the nature of the CLIP text model's text encoding ability.
@@ -21,6 +20,7 @@ Each experiment takes 3-5 minutes to complete running.
 
 
 1. Run the first two cells to clone the repository and install all required dependencies. The notebook will automatically restart and look like this:
+
     ![step1_image](/preliminary%20experiments/readme_imgs/step1.png)
 2. In the cell titled "Run Preliminary Experiment", choose the experiment using the dropdown.
 3. Run the cell. The experiment will be run from scratch:
@@ -30,6 +30,6 @@ Each experiment takes 3-5 minutes to complete running.
    4. Results are displayed in an interactive plot, also saved in the _preliminary experiments_ directory.
 
 Output Sample:
-![output_image](/readme_imgs/output.png)
+![output_image](/preliminary%20experiments/readme_imgs/output.png)
 
 
